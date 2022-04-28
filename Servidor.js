@@ -1,6 +1,6 @@
 const newContenedor = require('./Clases/Contenedor')
 const express = require('express');
-const { error } = require('console');
+
 
 const newProduct = new newContenedor.Contenedor('./productos.txt'); 
 
@@ -16,5 +16,5 @@ const server = app.listen(PORT, () => {
 server.on("erorr", error => console.log(`Error en el servidor ${error}`)); 
 
 app.get('/productos', (req,res) =>{
-    newProduct.GetAll();
+    res.send(newProduct.GetAll().then(prod => `<p>${prod}</p>`))    
 })

@@ -1,6 +1,5 @@
 const newContenedor = require('./Clases/Contenedor')
 const express = require('express');
-
 const newProduct = new newContenedor.Contenedor('./productos.txt'); 
 
 

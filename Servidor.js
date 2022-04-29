@@ -1,7 +1,7 @@
 const newContenedor = require('./Clases/Contenedor')
 const express = require('express');
-const newProduct = new newContenedor.Contenedor('./productos.txt'); 
 
+const newProduct = new newContenedor.Contenedor('./productos.txt'); 
 
 
 const app = express(); 
@@ -12,6 +12,10 @@ const server = app.listen(PORT, () => {
     console.log(`Servidor escuchando el puerto ${server.address().port}`);
 })
 server.on("erorr", error => console.log(`Error en el servidor ${error}`)); 
+
+app.get('/', (req, res) => {
+  res.send(`<p>Nombre de las rutas: /productos y /productoRandom</p>`)
+})
 
 app.get('/productos', (req, res) => {
   

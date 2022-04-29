@@ -39,7 +39,6 @@ class Contenedor{
 
             if(productId.includes(number)){
                 let index = productId.indexOf(number); 
-                console.table(infoParsed[index]);
                 return infoParsed[index]; 
             }
             else{

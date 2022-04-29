@@ -1,6 +1,5 @@
 const newContenedor = require('./Clases/Contenedor')
 const express = require('express');
-const { error } = require('console');
 
 const newProduct = new newContenedor.Contenedor('./productos.txt'); 
 
@@ -15,6 +14,14 @@ const server = app.listen(PORT, () => {
 })
 server.on("erorr", error => console.log(`Error en el servidor ${error}`)); 
 
-app.get('/productos', (req,res) =>{
-    newProduct.GetAll();
+app.get('/productos', (req, res) => {
+  
+  newProduct.GetAll().then(prod =>res.send(`<strong>${JSON.stringify(prod,null,2)}</strong>`))
 })
+
+app.get('/productoRandom', (req,res) => {
+  let numRandom = Math.floor((Math.random() * (6 - 3 + 1)) + 3); 
+  newProduct.GetById(numRandom).then(prod => res.send(`<strong>${JSON.stringify(prod,null,2)}</strong>`))
+})
+
+

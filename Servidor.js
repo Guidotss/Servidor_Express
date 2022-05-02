@@ -1,11 +1,16 @@
 const newContenedor = require('./Clases/Contenedor')
 const express = require('express');
 
+
 const newProduct = new newContenedor.Contenedor('./productos.txt'); 
+
+
 
 
 const app = express(); 
 const PORT = 8080; 
+
+
 
 
 const server = app.listen(PORT, () => {
@@ -19,12 +24,23 @@ app.get('/', (req, res) => {
 
 app.get('/productos', (req, res) => {
   
-  newProduct.GetAll().then(prod =>res.send(`<strong>${JSON.stringify(prod,null,2)}</strong>`))
+  newProduct.GetAll().then(prod =>res.send({prod}))
 })
 
 app.get('/productoRandom', (req,res) => {
-  let numRandom = Math.floor((Math.random() * (6 - 3 + 1)) + 3); 
-  newProduct.GetById(numRandom).then(prod => res.send(`<strong>${JSON.stringify(prod,null,2)}</strong>`))
+  newProduct.GetAll()
+  .then(
+    prod => {
+      let productsID = prod.map(e => e.id);
+      let min = Math.min(...productsID);
+      let max = Math.max(...productsID);
+      let idRandom = Math.floor((Math.random() * (max - min+1)) + min)
+      res.send(prod[idRandom -1]);
+    }
+  )
 })
+
+  
+
 
 

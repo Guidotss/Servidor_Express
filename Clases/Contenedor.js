@@ -14,7 +14,7 @@ class Contenedor{
             let id = 0; 
 
             for(let i = 0; i < productId.length; i++){
-                id < productId[i] || id == productId[i] ? id = productId[i] + 1 : id = undefined; 
+                id < productId[i] || id == productId[i] && productId!=undefined ? id = productId[i] + 1 : id = 0; 
             }
             object.id = id;
 

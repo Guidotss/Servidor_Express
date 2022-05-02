@@ -1,21 +1,21 @@
 [
   {
-    "id": 3,
+    "id": 1,
     "nombre": "Globo Terraqueo",
     "precio": 45.67
   },
   {
-    "id": 4,
+    "id": 2,
     "nombre": "Paleta Pintura",
     "precio": 456.78
   },
   {
-    "id": 5,
+    "id": 3,
     "nombre": "Reloj",
     "precio": 67.89
   },
   {
-    "id": 6,
+    "id": 4,
     "nombre": "lapiz",
     "precio": 100
   }
